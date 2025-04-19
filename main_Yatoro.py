@@ -3,10 +3,10 @@ pygame.init()
 display = pygame.display.set_mode((800,600))
 display.fill("black")
 pygame.image.load("assets/images/Yatorogod.gif")
-image = pygame.image.load("assets/images/Yatorogod.gif")
+Yatoro_image = pygame.image.load("assets/images/Yatorogod.gif")
 
 from character import Character
-Yatoro = Character(50,50,50,0,-230,image)
+Yatoro = Character(50,50,50,0,-230,Yatoro_image)
 exit = False
 while not exit:
     display.fill("grey")

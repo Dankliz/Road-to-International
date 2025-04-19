@@ -15,30 +15,43 @@ class Character:
         self.g = 0.98
         self.max_jump_flag = False
         self.max_jump = self.y - 3
+        self.flor = 600
+        self.rect = self.image.get_rect(topleft=(x, y))
 
+
+
+
+
+
+
+
+
+
+#Прыжок
     def jump(self):
-        self.max_jump = self.y - 3
         if self.on_ground == True:
             self.velocity = self.velocity + 1
             self.y = self.y - self.velocity
-            if self.max_jump == self.y:
+            if self.max_jump >= self.y:
                 self.max_jump_flag = True
             self.on_ground = False
 
         if self.on_ground == False:
-            self.velocity = self.velocity + 1
-            self.y = self.y - self.velocity
-            if self.max_jump == self.y:
-                self.max_jump_flag = True
-            self.on_ground = False
+            if self.max_jump_flag == False:
+                self.velocity = self.velocity + 1
+                self.y = self.y - self.velocity
+                if self.max_jump >= self.y:
+                    self.max_jump_flag = True
+                self.on_ground = False
+            if self.max_jump_flag == True:
+                self.y = self.y + self.velocity
+                if self.org_y == self.y:
+                    self.on_ground = True
+                    if self.y >= self.flor:
+                        self.on_ground = True
 
-            if self.max_jump == self.y:
-                self.max_jump_flag = True
 
-        if self.max_jump_flag == True:
-            self.y = self.y + self.velocity
-            if self.org_y == self.y:
-                self.on_ground = True
+
 
 
 
